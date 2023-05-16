@@ -40,7 +40,18 @@ class Tree():
     
     ⬇ Your code starts here:
     '''
-    pass
+    def __init__(self, name: str):
+        self.name = name
+        self.message = ""
+        self.children = []
+
+
+    def insert_child(self, object: Node):
+        self.children.append(object)
+
+    
+    def get_children(self):
+        return self.children
     '''
     ⬆ Your code ends here.
     '''

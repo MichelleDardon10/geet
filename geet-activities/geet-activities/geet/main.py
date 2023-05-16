@@ -101,7 +101,8 @@ def init():
 
     ⬇ Your code starts here:
     '''
-    pass
+    with open(file_name, "wb") as branch_file:
+        pickle.dump(branch_master, branch_file, pickle.HIGHEST_PROTOCOL)
     '''
     ⬆ Your code ends here.
     '''
@@ -138,7 +139,7 @@ def config(u, e):
 
 
 @cli.command()
-@click.option('-m', help='Commit message')
+#@click.option('-m', help='Commit message')
 def commit(m):
 
     path = status_utils.get_current_path()
