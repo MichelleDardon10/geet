@@ -14,6 +14,7 @@ import time
 import sys
 import os
 
+print("si furula1")
 
 
 @click.group()
@@ -107,7 +108,8 @@ def init():
 
     ⬇ Your code starts here:
     '''
-    pass
+    with open(file_name, "wb") as branch_file:
+        pickle.dump(branch_master, branch_file, pickle.HIGHEST_PROTOCOL)
     '''
     ⬆ Your code ends here.
     '''
@@ -119,7 +121,7 @@ def init():
 @click.option('-u', help='Author\'s name')
 @click.option('-e', help='Author\'s email address')
 
-def config(u, e):
+def config(u:str, e: str):
 
     '''
     TODO no. 4: User config command
@@ -132,21 +134,21 @@ def config(u, e):
         - Insert the parameters received into a list. The resulting list should look like this:
             [<username>, <email>]
     
-            #PENDIENTE
-        - Once you have the list, persist it into an object called 'user_config' in the hidden .geet folder.
+           
+        - Once you have the list, persist it into an object called 'user_config' in the hidden .geet folder. #folder is called callese
 
         - Display in console the new user and email set.
 
     ⬇ Your code starts here:
     '''
-    lista = []*2
+
+    lista = [None]*2
     lista[0] = u
     lista[1] = e
-    
-    user_config = None
-    
-    return user_config
-    '''
+    #print(lista)
+    user_config = lista
+    print(user_config)
+    ''' 
     ⬆ Your code ends here.
     '''
 
@@ -241,7 +243,7 @@ TESTING AREA
 
 '''
 
-
+print("si furula2")
 
 
 

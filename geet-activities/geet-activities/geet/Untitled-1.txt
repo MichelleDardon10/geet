@@ -1,0 +1,18 @@
+'''
+        MAIN.PY CONFIG -U -E PICKLE ERRORS
+        file_path = "C:/Users/miche/OneDrive/Escritorio/ESTRUCTURAS/geet/geet-activities/geet-activities/geet/callese"
+
+        with open(file_path, "wb") as user_config:
+        pickle.dump(lista, user_config, pickle.HIGHEST_PROTOCOL)
+
+        ERRORES:
+        SyntaxError: (unicode error) 'unicodeescape' codec can't decode bytes in position 2-3: truncated \UXXXXXXXX escape
+        PermissionError: [Errno 13] Permission denied: 'C:/Users/miche/OneDrive/Escritorio/ESTRUCTURAS/geet/geet-activities/geet-activities/geet/callese'
+
+        SOLUCIONES PROPUESTAS:
+        - r
+        - Cambio de \ a /
+        - " " o '' 
+        - Otro codigo
+        - \\
+        '''
