@@ -108,8 +108,8 @@ def init():
 
     ⬇ Your code starts here:
     '''
-    with open(file_name, "wb") as branch_file:
-        pickle.dump(branch_master, branch_file, pickle.HIGHEST_PROTOCOL)
+    with open(file_name, "wb") as file:
+        pickle.dump(branch_master, file, pickle.HIGHEST_PROTOCOL)
     '''
     ⬆ Your code ends here.
     '''
@@ -192,7 +192,12 @@ def commit(m):
 
     ⬇ Your code starts here:
     '''
-    pass
+    branch.insert_last(Node(commit_tree.name, commit_tree.message, 'Angel Tortola', 'tortola@ufm.edu')) #Autor y el email de user_config
+
+    with open(branch_path, "wb") as file:
+        pickle.dump(branch, file, pickle.HIGHEST_PROTOCOL)
+
+    print('\n     < New commit added to branch master. >')
     '''
     ⬆ Your code ends here.
     '''
@@ -216,8 +221,10 @@ def log():
 
     ⬇ Your code starts here:
     '''
-    pass
-    branch = None # Remove. Added to avoid warning in line 211.
+    with open(branch_path, 'rb') as file:
+        branch = pickle.load(file)
+    
+    branch.reverse()
     '''
     ⬆ Your code ends here.
     '''
