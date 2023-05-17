@@ -16,11 +16,11 @@ class Node:
 
     ⬇ Your code starts here:
     '''
-    def __init__(self, hash: str, message: str):
+    def __init__(self, hash: str, message: str, author = None, email= None):
         self.hash = hash
         self.message = message
-        self.author = None
-        self.email = None
+        self.author = author
+        self.email = email
         self.next = None
 
 
@@ -43,8 +43,8 @@ class LinkedList:
         __init__(self)
         __iter__(self)
         traverse(self)
-        insert_first(self, node) #insert_at_beginning
-        insert_last(self, node) #insert_at_end + #insert_before
+        insert_first(self, node) #insert_first
+        insert_last(self, node) #insert_last + #insert_before
         remove(key)
         reverse(self)
 
@@ -104,7 +104,7 @@ class LinkedList:
             print(current_node)
 
 
-    def insert_at_beginning(self, new_node: Node):
+    def insert_first(self, new_node: Node):
         '''
         Inserts a node at the start of the linked list.
 
@@ -119,7 +119,7 @@ class LinkedList:
         self.start = new_node
 
 
-    def insert_at_end(self, new_node: Node):
+    def insert_last(self, new_node: Node):
         '''
         Inserts a node at the end of the linked list.
 
@@ -134,8 +134,9 @@ class LinkedList:
             self.start = new_node
 
         else:
-            for current_node in self:
-                pass
+            current_node = self.start
+            while current_node.next is not None:
+                current_node = current_node.next
 
             current_node.next = new_node
 
@@ -157,7 +158,7 @@ class LinkedList:
             return
 
         if self.start.hash == reference_node:
-            return self.insert_at_beginning(new_node)
+            return self.insert_first(new_node)
 
         previous_node = self.start
 
@@ -173,9 +174,9 @@ class LinkedList:
         print('Reference node {} not found in linked list...'.format(reference_node))
 
 
-    def delete(self, reference_node: str):
+    def remove(self, reference_node: str):
         '''
-        Deletes a node given a value reference.
+        removes a node given a value reference.
 
         Args:
             reference_node (str): value of node used as reference
@@ -231,8 +232,8 @@ new_node = Node("1", "Si furula")
 new_node_2 = Node("2", "Vamos a ver")
 
 new_LinkedList = LinkedList()
-new_LinkedList.insert_at_beginning(new_node)
-new_LinkedList.insert_at_end(new_node_2)
+new_LinkedList.insert_first(new_node)
+new_LinkedList.insert_last(new_node_2)
 
 new_LinkedList.reverse()
 

@@ -1,11 +1,9 @@
 from utils import init as init_utils
 from utils.data_structures.linked_list import Node,LinkedList
-
+from utils.data_structures import tree
 
 import utils.status as status_utils
 import utils.commit as commit_utils
-
-#import utils.init as init_utils
 
 from pyfiglet import Figlet
 import pickle
@@ -13,8 +11,6 @@ import click
 import time
 import sys
 import os
-
-print("si furula1")
 
 
 @click.group()
@@ -62,7 +58,7 @@ def status():
     if not files_changed:
         print('        < There are no changes in the repository... >')
 
-
+#VER INSERT NAME Y MESSAGE
 @cli.command()
 def init():
 
@@ -90,7 +86,8 @@ def init():
 
     # Creates master branch (linked list)
     branch_master = init_utils.create_branch(path) # NOTE: Activity no. 1 function invocation
-
+    
+    
     # Creates initial commit
     commit_tree = commit_utils.create_tree_object(path, 'Initial commit') # NOTE: Activity no. 2 main function call
     commit_utils.save_tree_object(path, commit_tree)
@@ -108,8 +105,14 @@ def init():
 
     ⬇ Your code starts here:
     '''
+<<<<<<< Updated upstream
     with open(file_name, "wb") as file:
         pickle.dump(branch_master, file, pickle.HIGHEST_PROTOCOL)
+=======
+        
+    with open(file_name, "wb") as branch_file:
+        pickle.dump(branch_master, branch_file, pickle.HIGHEST_PROTOCOL)
+>>>>>>> Stashed changes
     '''
     ⬆ Your code ends here.
     '''
@@ -142,20 +145,31 @@ def config(u:str, e: str):
     ⬇ Your code starts here:
     '''
 
-    lista = [None]*2
-    lista[0] = u
-    lista[1] = e
-    #print(lista)
-    user_config = lista
+    user_config = [None]*2
+    user_config[0] = u
+    user_config[1] = e
     print(user_config)
+<<<<<<< Updated upstream
 
 
     
+=======
+    
+
+
+    current_path = os.getcwd()
+     
+    file_path = os.path.join(str(current_path) + "/.geet", 'user_config.pickle')
+    with open(file_path, 'wb') as file:
+        pickle.dump(user_config, file)
+
+
+>>>>>>> Stashed changes
     ''' 
     ⬆ Your code ends here.
     '''
 
-
+#VER NAME Y MESSAGE
 @cli.command()
 @click.option('-m', help='Commit message')
 def commit(m):
@@ -205,7 +219,7 @@ def commit(m):
     ⬆ Your code ends here.
     '''
 
-
+#VER HASH MESSAGE AUTHOR EMAIL
 @cli.command()
 def log():
 
@@ -253,7 +267,7 @@ TESTING AREA
 
 '''
 
-print("si furula2")
+
 
 
 

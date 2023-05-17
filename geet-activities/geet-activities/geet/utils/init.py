@@ -65,7 +65,7 @@ Testing area
 nuevo_nodo = linked_list.Node("H16", "ESO MAMONA")
 nueva_lista = linked_list.LinkedList()
 
-nueva_lista.insert_at_beginning(nuevo_nodo)
+nueva_lista.insert_first(nuevo_nodo)
 
 print(nueva_lista)
 
