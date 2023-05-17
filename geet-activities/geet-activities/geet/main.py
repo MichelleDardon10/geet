@@ -105,14 +105,9 @@ def init():
 
     ⬇ Your code starts here:
     '''
-<<<<<<< Updated upstream
-    with open(file_name, "wb") as file:
-        pickle.dump(branch_master, file, pickle.HIGHEST_PROTOCOL)
-=======
         
     with open(file_name, "wb") as branch_file:
         pickle.dump(branch_master, branch_file, pickle.HIGHEST_PROTOCOL)
->>>>>>> Stashed changes
     '''
     ⬆ Your code ends here.
     '''
@@ -149,11 +144,6 @@ def config(u:str, e: str):
     user_config[0] = u
     user_config[1] = e
     print(user_config)
-<<<<<<< Updated upstream
-
-
-    
-=======
     
 
 
@@ -164,7 +154,6 @@ def config(u:str, e: str):
         pickle.dump(user_config, file)
 
 
->>>>>>> Stashed changes
     ''' 
     ⬆ Your code ends here.
     '''
@@ -209,10 +198,19 @@ def commit(m):
 
     ⬇ Your code starts here:
     '''
-    branch.insert_last(Node(commit_tree.name, commit_tree.message, 'Angel Tortola', 'tortola@ufm.edu')) #Autor y el email de user_config
+    current_path = os.getcwd()
+    file_path = os.path.join(str(current_path) + "/.geet", 'user_config.pickle')
+
+    with open(file_path, 'rb') as file:
+        user_config = pickle.load(file)
+
+
+    branch.insert_last(Node(commit_tree.name, commit_tree.message, user_config[0], user_config[1])) #Autor y el email de user_config 'Angel Tortola', 'tortola@ufm.edu')
 
     with open(branch_path, "wb") as file:
         pickle.dump(branch, file, pickle.HIGHEST_PROTOCOL)
+
+
 
     print('\n     < New commit added to branch master. >')
     '''
