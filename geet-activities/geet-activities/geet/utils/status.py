@@ -145,3 +145,4 @@ def scan_for_modified_files(path: str) -> list:
 # print("New files:", scan_for_new_files(PATH))
 # print("Deleted files:", scan_for_deleted_files(PATH))
 # print("Modified files:", scan_for_modified_files(PATH))
+

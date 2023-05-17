@@ -26,6 +26,9 @@ Go to your filesystem's root:
 > `$ cd ~`  
 
 In your `.bashrc`  or`.zshrc` file, add the following line and save the changes:  
+
+TODO0: Crear doskey permanente
+  crear el doskey permanentemente 
 > `alias geet='python {path-to-your-repo}/geet/main.py'`
 
 After restarting your terminal, you should be able to execute:  

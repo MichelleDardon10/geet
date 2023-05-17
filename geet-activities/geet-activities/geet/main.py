@@ -1,23 +1,29 @@
-from utils.data_structures.linked_list import Node
+from utils import init as init_utils
+from utils.data_structures.linked_list import Node,LinkedList
+
+
 import utils.status as status_utils
 import utils.commit as commit_utils
-import utils.init as init_utils
-#from pyfiglet import Figlet
+
+#import utils.init as init_utils
+
+from pyfiglet import Figlet
 import pickle
-#import click
+import click
 import time
 import sys
 import os
 
 
-#@click.group()
+
+@click.group()
 def cli():
     pass
 
 
 @cli.command()
 def banner():
-
+    pass
     figlet = Figlet(font='slant')
     print(figlet.renderText('geet'))
 
@@ -112,6 +118,7 @@ def init():
 @cli.command()
 @click.option('-u', help='Author\'s name')
 @click.option('-e', help='Author\'s email address')
+
 def config(u, e):
 
     '''
@@ -125,13 +132,20 @@ def config(u, e):
         - Insert the parameters received into a list. The resulting list should look like this:
             [<username>, <email>]
     
+            #PENDIENTE
         - Once you have the list, persist it into an object called 'user_config' in the hidden .geet folder.
 
         - Display in console the new user and email set.
 
     ⬇ Your code starts here:
     '''
-    pass
+    lista = []*2
+    lista[0] = u
+    lista[1] = e
+    
+    user_config = None
+    
+    return user_config
     '''
     ⬆ Your code ends here.
     '''
@@ -207,7 +221,7 @@ def log():
     '''
 
     print('[HEAD]\n')
-
+    
     for commit in branch:
         print('Commit hash:', commit.hash)
         print('Commit message:', commit.message)
@@ -219,3 +233,18 @@ def log():
 
 if __name__ == '__main__':
     cli()
+
+
+'''
+TESTING AREA
+
+
+'''
+
+
+
+
+
+
+
+
