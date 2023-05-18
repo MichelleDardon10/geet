@@ -237,5 +237,6 @@ new_LinkedList.insert_last(new_node_2)
 
 new_LinkedList.reverse()
 
-print(new_LinkedList)
+
+(new_LinkedList)
 '''

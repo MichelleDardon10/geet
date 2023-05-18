@@ -1,6 +1,7 @@
 from utils import init as init_utils
 from utils.data_structures.linked_list import Node,LinkedList
 from utils.data_structures import tree
+from utils.data_structures.queues import Queues
 
 import utils.status as status_utils
 import utils.commit as commit_utils
@@ -161,7 +162,8 @@ def config(u:str, e: str):
 #VER NAME Y MESSAGE
 @cli.command()
 @click.option('-m', help='Commit message')
-def commit(m):
+@click.option('-y', help ='yes')
+def commit(m, y):
 
     path = status_utils.get_current_path()
     previous_hash_dict = status_utils.read_current_hash_dict(path)
@@ -198,24 +200,59 @@ def commit(m):
 
     ⬇ Your code starts here:
     '''
+    pull_request = Queues(5)
+    
     current_path = os.getcwd()
-    file_path = os.path.join(str(current_path) + "/.geet", 'user_config.pickle')
+    file_path = os.path.join(str(current_path) + "\.geet", 'user_config.pickle')
 
+     
     with open(file_path, 'rb') as file:
         user_config = pickle.load(file)
+   
+
+    if y == "yes":
+        
+        #if pull_request.front ==1 or pull_request.front > pull_request.rear:
+            
+        branch.insert_last(Node(commit_tree.name, commit_tree.message, user_config[0], user_config[1])) #Autor y el email de user_config 'Angel Tortola', 'tortola@ufm.edu')
+        
+        #else:
+        #branch.insert_last(pull_request.dequeue)
 
 
-    branch.insert_last(Node(commit_tree.name, commit_tree.message, user_config[0], user_config[1])) #Autor y el email de user_config 'Angel Tortola', 'tortola@ufm.edu')
+        with open(branch_path, "wb") as file:
+            pickle.dump(branch, file, pickle.HIGHEST_PROTOCOL)
 
-    with open(branch_path, "wb") as file:
-        pickle.dump(branch, file, pickle.HIGHEST_PROTOCOL)
+        print('\n     < New commit added to branch master. >')
 
+    elif y != "yes":
 
+        print('\n     < No tienes perrrrrrmiso >')
+        pull_request.enqueue(user_config[0]) 
 
-    print('\n     < New commit added to branch master. >')
+        path = status_utils.get_current_path()
+        pr_path = path + '.geet/pr'
+
+        with open(pr_path, "wb") as file:
+            pickle.dump(pull_request, file, pickle.HIGHEST_PROTOCOL)
+
     '''
     ⬆ Your code ends here.
     '''
+@cli.command
+def pr():
+
+    pr_list: Queues
+    path = status_utils.get_current_path()
+    pr_path = path + '.geet/pr'
+
+    with open(pr_path, 'rb') as file:
+        pr_list = pickle.load(file)
+
+    print(pr_list.dequeue())
+
+    with open(pr_path, "wb") as file:
+            pickle.dump(pr_list, file, pickle.HIGHEST_PROTOCOL)
 
 #VER HASH MESSAGE AUTHOR EMAIL
 @cli.command()

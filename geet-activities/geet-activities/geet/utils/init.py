@@ -67,6 +67,6 @@ nueva_lista = linked_list.LinkedList()
 
 nueva_lista.insert_first(nuevo_nodo)
 
-print(nueva_lista)
+#print(nueva_lista)
 
 
